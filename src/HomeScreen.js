@@ -22,7 +22,7 @@ const HomeScreen = () => {
 
     // count content
     const [ count, setCount ] = useState(0);
-    const { state, dispatch } = useReducer( countReducer, initialState);
+    const [ state, dispatch ] = useReducer( countReducer, initialState);
 
     const Increase = () => {
         dispatch({type: 'increase'})
@@ -47,7 +47,7 @@ const HomeScreen = () => {
     return (
         <View style={styles.container}>
             <View style={styles.counterView}>
-                <Text>{state}</Text>
+                <Text style={{alignSelf: 'center'}}>{state}</Text>
                 <View style={{flexDirection: 'row'}}>
                     <Button title="+" onPress={() => Increase()}/>
                     <Button title="-"/>
@@ -78,9 +78,10 @@ const styles = StyleSheet.create({
         borderWidth: 1
     },
     counterView: {
-        borderWidth: 1,
+        margin: 20,
         padding: 10,
-        borderRadius: 5
+        borderRadius: 5,
+        alignSelf: 'center'
     }
 });
 
