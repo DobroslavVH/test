@@ -1,11 +1,32 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback, useReducer } from "react";
 import {Text, View, StyleSheet, Button, TextInput} from "react-native";
 import List from "./List";
+
+const initialState = 0;
+
+const countReducer = (state, action) => {
+    switch (action.type) {
+        case 'increase':
+            return state + 1;
+        case 'decrease':
+            return state - 1;
+        default:
+            return state;
+    }
+};
 
 const HomeScreen = () => {
 
     const [ number, setNum ] = useState(0);
     const [ dark, setDark ] = useState(false);
+
+    // count content
+    const [ count, setCount ] = useState(0);
+    const { state, dispatch } = useReducer( countReducer, initialState);
+
+    const Increase = () => {
+        dispatch({type: 'increase'})
+    };
 
     const getItems = useCallback(() => {
         return [number, number + 1, number + 2];
@@ -25,6 +46,13 @@ const HomeScreen = () => {
 
     return (
         <View style={styles.container}>
+            <View style={styles.counterView}>
+                <Text>{state}</Text>
+                <View style={{flexDirection: 'row'}}>
+                    <Button title="+" onPress={() => Increase()}/>
+                    <Button title="-"/>
+                </View>
+            </View>
             <TextInput
                 style={styles.input}
                 onChangeText={(number) => setNum(number)}
@@ -48,6 +76,11 @@ const styles = StyleSheet.create({
     },
     input: {
         borderWidth: 1
+    },
+    counterView: {
+        borderWidth: 1,
+        padding: 10,
+        borderRadius: 5
     }
 });
 
