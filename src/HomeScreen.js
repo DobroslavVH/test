@@ -2,6 +2,8 @@ import React, { useState, useMemo, useCallback, useReducer } from "react";
 import {Text, View, StyleSheet, Button, TextInput} from "react-native";
 import List from "./List";
 
+// some content
+
 const initialState = 0;
 
 const countReducer = (state, action) => {
