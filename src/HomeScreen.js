@@ -21,11 +21,14 @@ const HomeScreen = () => {
     const [ dark, setDark ] = useState(false);
 
     // count content
-    const [ count, setCount ] = useState(0);
     const [ state, dispatch ] = useReducer( countReducer, initialState);
 
     const Increase = () => {
         dispatch({type: 'increase'})
+    };
+
+    const Decrease = () => {
+        dispatch({type: 'decrease'})
     };
 
     const getItems = useCallback(() => {
@@ -47,10 +50,10 @@ const HomeScreen = () => {
     return (
         <View style={styles.container}>
             <View style={styles.counterView}>
-                <Text style={{alignSelf: 'center'}}>{state}</Text>
+                <Text style={{alignSelf: 'center', fontSize: 22}}>{state}</Text>
                 <View style={{flexDirection: 'row'}}>
                     <Button title="+" onPress={() => Increase()}/>
-                    <Button title="-"/>
+                    <Button title="-" onPress={() => Decrease()}/>
                 </View>
             </View>
             <TextInput
