@@ -3,6 +3,7 @@ import {Text, View, StyleSheet, Button, TextInput} from "react-native";
 import List from "./List";
 
 // some content in master branch
+// master
 
 const initialState = 0;
 
