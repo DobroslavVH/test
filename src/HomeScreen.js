@@ -2,7 +2,8 @@ import React, { useState, useMemo, useCallback, useReducer } from "react";
 import {Text, View, StyleSheet, Button, TextInput} from "react-native";
 import List from "./List";
 
-// some content
+// some content in master branch
+// master
 
 const initialState = 0;
 
